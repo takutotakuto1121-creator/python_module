@@ -1,16 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_hello_garden.py                                 :+:      :+:    :+:    #
+#    ft_plot_area.py                                    :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsugimot <tsugimot@student.42.fr>          +#+  +:+       +#+         #
+#    By: tsugimot <tsugimot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/08 19:15:03 by tsugimot          #+#    #+#              #
-#    Updated: 2026/05/08 20:11:37 by tsugimot         ###   ########.fr        #
+#    Created: 2026/05/09 16:52:40 by tsugimot          #+#    #+#              #
+#    Updated: 2026/05/09 18:17:50 by tsugimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-def	ft_hello_garden():
-	print("Hello, Garden Community!")
+def ft_plot_area():
+	length = input("Enter length: ")
+	width = input("Enter width: ")
+	print("Plot area:", int(length)*int(width))
 
-# ft_hello_garden()
+ft_plot_area()
