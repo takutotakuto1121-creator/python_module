@@ -2,6 +2,10 @@
 
 import sys
 
+class RedundantError(Exception):
+	def __init__(self):
+		super().__init__()
+
 def ft_is_base(c, base):
 	for char in base:
 		if c == char:
@@ -41,15 +45,21 @@ def add_to_dict(dict, av):
 	if flag == 0:
 		print(f"Error - invalid parameter '{av}'")
 	else:
-		key = av[:pos]
-		value = ft_int(av[pos + 1:])
-		dict.update({key:value})
+		try:
+			key = av[:pos]
+			value = ft_int(av[pos + 1:])
+			if key in dict:
+				raise RedundantError
+			dict.update({key:value})
+		except ValueError as e:
+			print(f"Quantity error for '{key}': {e}")
+		except RedundantError as e:
+			print(f"Redundant item '{key}' - discarding")
 
 def get_inventory():
 	av = sys.argv
-	ac = len(av)
 	dict = {}
-	for str in av:
+	for str in av[1:]:
 		add_to_dict(dict, str)
 	return dict
 
@@ -57,11 +67,28 @@ def main():
 	print("=== Inventory System Analysis ===")
 	dict = get_inventory()
 	print(f"Got inventory: {dict}")
-	item = dict.keys()
+	item_s = dict.keys()
+	item = list(item_s)
 	print(f"Item list: {item}")
-	value = dict.values()
+	value_s = dict.values()
+	value = list(value_s)
 	total = sum(value)
 	print(f"Total quantiti of the 5 items: {total}")
+	
+	min = value[0]
+	max = value[0]
+	for key in item:
+		print(f"Item {key} represents {round(dict[key]/total*100, 1)}%")
+		if dict[key] < min:
+			min = dict[key]
+		if dict[key] > max:
+			max = dict[key]
 
+	print(f"Item most abundant: position with quantity {max}")
+	print(f"Item least abundant: sword quantity {min}")
+	
+	dict.update({"magic_item": 1})
+	print(f"Updated inventory: {dict}")
+	
 if __name__ == "__main__":
 	main()
