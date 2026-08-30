@@ -1,7 +1,9 @@
-def ft_count_harvest_iterative():
-	num = input("Days until havest: ")
-	for i in range(1, int(num) + 1):
-		print("Day", i)
-	print("Harvest time!")
+def ft_count_harvest_iterative() -> None:
+    num = input("Days until havest: ")
+    for i in range(1, int(num) + 1):
+        print("Day", i)
+    print("Harvest time!")
 
-ft_count_harvest_iterative()
+
+if __name__ == "__main__":
+    ft_count_harvest_iterative()
