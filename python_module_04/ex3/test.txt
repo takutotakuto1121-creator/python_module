@@ -1,0 +1,22 @@
+ISASCII(3)                 Library Functions Manual                 ISASCII(3)
+
+NNAAMMEE
+     iissaasscciiii – test for ASCII character
+
+LLIIBBRRAARRYY
+     Standard C Library (libc, -lc)
+
+SSYYNNOOPPSSIISS
+     ##iinncclluuddee <<ccttyyppee..hh>>
+
+     _i_n_t
+     iissaasscciiii(_i_n_t _c);
+
+DDEESSCCRRIIPPTTIIOONN
+     The iissaasscciiii() function tests for an ASCII character, which is any
+     character between 0 and octal 0177 inclusive.
+
+SSEEEE AALLSSOO
+     ctype(3), iswascii(3), ascii(7)
+
+macOS 15.6                      October 6, 2002                     macOS 15.6
