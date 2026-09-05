@@ -16,7 +16,7 @@ class BattleStrategy(ABC):
         ...
 
     @abstractmethod
-    def is_valid(self) -> bool:
+    def is_valid(self, creature: Creature) -> bool:
         ...
 
 
@@ -34,24 +34,29 @@ class NormalStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
         return isinstance(creature, Creature)
 
+
 class AgressiveStrategy(BattleStrategy):
     def act(self, creature: Creature) -> str:
-        if not self.is_valid(creature):
+        if not isinstance(creature, TransformCapability):
             raise InvalidStrategyError(
                 f"Battle error, aborting tournament: "
                 f"Invalide Creature '{creature._name}'"
                 "for this agressive strategy"
             )
         else:
-            result = f"{creature.transform()}\n{creature.attack()}\n{creature.revert()}"
+            result = (
+                f"{creature.transform()}\n"
+                f"{creature.attack()}\n{creature.revert()}"
+                )
             return result
 
     def is_valid(self, creature: Creature) -> bool:
         return isinstance(creature, TransformCapability)
 
+
 class DefensiveStrategy(BattleStrategy):
     def act(self, creature: Creature) -> str:
-        if not self.is_valid(creature):
+        if not isinstance(creature, HealCapability):
             raise InvalidStrategyError(
                 f"Battle error, aborting tournament: "
                 f"Invalide Creature '{creature._name}'"
@@ -60,6 +65,6 @@ class DefensiveStrategy(BattleStrategy):
         else:
             result = f"{creature.attack()}\n{creature.heal()}\n"
             return result
-    
+
     def is_valid(self, creature: Creature) -> bool:
         return isinstance(creature, HealCapability)

@@ -29,6 +29,8 @@ class DataProcessor(abc.ABC):
 
 class NumericProcesor(DataProcessor):
     def validate(self, data: typing.Any) -> bool:
+        if isinstance(data, bool):
+            return False
         if isinstance(data, (int, float)):
             return True
         elif isinstance(data, list):

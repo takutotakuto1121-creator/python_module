@@ -24,8 +24,7 @@ def ft_int(s: str) -> int:
         sign = -1
         index += 1
     elif s[index] in digits:
-        pass
-    else:
+        pass    else:
         raise ValueError("invalid string")
 
     for c in s[index:]:

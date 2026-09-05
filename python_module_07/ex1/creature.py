@@ -2,7 +2,8 @@
 
 
 from ex0.creature import Creature
-from ex1.capability import HealCapability, TransformCapability
+from ex1.capability import HealCapability as HealCapability
+from ex1.capability import TransformCapability as TransformCapability
 
 
 class Sproutling(Creature, HealCapability):
@@ -34,9 +35,9 @@ class Shiftling(Creature, TransformCapability):
 
     def attack(self) -> str:
         if self._transformed:
-            return f"performs a boosted strike!"
+            return "performs a boosted strike!"
         else:
-         return f"{self._name} attacks normally"
+            return f"{self._name} attacks normally"
 
     def transform(self) -> str:
         self._transformed = True

@@ -12,11 +12,11 @@ def check_hardcoded(source_path: str) -> bool:
         "API_KEY " + "="
         "LOG_LEVEL " + "="
         "ZION_ENDPOINT " + "="
-    ]    
+    ]
     with open(source_path, "r") as f:
         source = f.read()
         return not any(patterns in source for patterns in suspicious_patterns)
-        
+
 
 def check_env(values: list) -> bool:
     env_exist = os.path.exists(".env")
@@ -24,10 +24,11 @@ def check_env(values: list) -> bool:
     return env_exist and values__exist
 
 
-def check_overrides() -> None:
+def check_overrides() -> bool:
     os.environ["MATRIX_MODE"] = "test"
     load_dotenv()
     return os.getenv("MATRIX_MODE") == "test"
+
 
 if __name__ == "__main__":
     load_dotenv()
@@ -65,4 +66,3 @@ if __name__ == "__main__":
         print("[KO] Production overrides aren't available")
     print()
     print("The Oracle sees all configurations")
-

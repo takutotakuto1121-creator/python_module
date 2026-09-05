@@ -3,14 +3,16 @@
 
 from ex0.creature import Creature
 from ex0 import CreatureFactory, FlameFactory, AquaFactory
-from ex1 import HealingFactory, TransformingFactory
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
     NormalStrategy, AgressiveStrategy, DefensiveStrategy,
     BattleStrategy, InvalidStrategyError
 )
 
 
-def single_battle(opponents: list[tuple[CreatureFactory,BattleStrategy]]) -> None:
+def single_battle(
+    opponents: list[tuple[CreatureFactory, BattleStrategy]]
+) -> None:
     number = len(opponents)
     print(f"{number} opponents involved")
     print()
@@ -19,8 +21,8 @@ def single_battle(opponents: list[tuple[CreatureFactory,BattleStrategy]]) -> Non
     for factory, strategy in opponents:
         fighters.append((factory.create_base(), strategy))
 
-    for i in range (len(fighters)):
-        for j in range (i + 1, len(fighters)):
+    for i in range(len(fighters)):
+        for j in range(i + 1, len(fighters)):
             try:
                 creature_a, strategy_a = fighters[i]
                 creature_b, strategy_b = fighters[j]
@@ -38,8 +40,22 @@ def single_battle(opponents: list[tuple[CreatureFactory,BattleStrategy]]) -> Non
 
 if __name__ == "__main__":
     print("=== Tournament ===")
-    single_battle([(FlameFactory(), NormalStrategy()), (AquaFactory(), NormalStrategy())])
-    single_battle([(HealingFactory(), DefensiveStrategy()), (TransformingFactory(), AgressiveStrategy())])
-    tournament = [(FlameFactory(), NormalStrategy()), (AquaFactory(), NormalStrategy()), (HealingFactory(), DefensiveStrategy()), (TransformingFactory(), AgressiveStrategy())]
+    single_battle([
+        (FlameFactory(), NormalStrategy()),
+        (AquaFactory(), NormalStrategy()),
+    ])
+    single_battle([
+        (HealingCreatureFactory(), DefensiveStrategy()),
+        (TransformCreatureFactory(), AgressiveStrategy()),
+    ])
+    tournament = [
+        (FlameFactory(), NormalStrategy()),
+        (AquaFactory(), NormalStrategy()),
+        (HealingCreatureFactory(), DefensiveStrategy()),
+        (TransformCreatureFactory(), AgressiveStrategy()),
+    ]
     single_battle(tournament)
-    single_battle([(FlameFactory(), NormalStrategy()), (AquaFactory(), AgressiveStrategy())])
+    single_battle([
+        (FlameFactory(), NormalStrategy()),
+        (AquaFactory(), AgressiveStrategy()),
+    ])

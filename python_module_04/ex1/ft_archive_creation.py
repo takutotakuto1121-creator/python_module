@@ -16,7 +16,7 @@ def add_hash(content: str) -> str:
     return new_content
 
 
-def main():
+def main() -> None:
     av = sys.argv
     ac = len(av)
 

@@ -5,5 +5,4 @@ from ex2.strategy import (
 
 
 __all__ = ["NormalStrategy", "AgressiveStrategy", "DefensiveStrategy",
-           "BattleStrategy", "InvalidStrategyError"
-]
+           "BattleStrategy", "InvalidStrategyError"]

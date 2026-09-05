@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 
-from ex0.factory import CreatureFactory
+from ex0.factory import CreatureFactory as CreatureFactory
 from ex1.creature import Sproutling, Bloomelle, Shiftling, Morphagon
 
 
-class HealingFactory(CreatureFactory):
+class HealingCreatureFactory(CreatureFactory):
     def create_base(self) -> Sproutling:
         return Sproutling()
 
@@ -13,7 +13,7 @@ class HealingFactory(CreatureFactory):
         return Bloomelle()
 
 
-class TransformingFactory(CreatureFactory):
+class TransformCreatureFactory(CreatureFactory):
     def create_base(self) -> Shiftling:
         return Shiftling()
 

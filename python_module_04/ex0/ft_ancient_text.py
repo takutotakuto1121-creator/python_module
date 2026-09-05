@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
-
 import sys
 
 
-def main():
+def main() -> None:
     av = sys.argv
     ac = len(av)
 

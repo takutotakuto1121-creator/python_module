@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 
-from ex1 import HealingFactory, TransformingFactory
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
 
 if __name__ == "__main__":
     print("=== Testing Creature with healing capability ===")
 
-    healingfactory = HealingFactory()
+    healingfactory = HealingCreatureFactory()
     sproutling = healingfactory.create_base()
     bloomelle = healingfactory.create_evolved()
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     print()
 
     print("=== Testing Creature with transform capability ===")
-    transformingfactory = TransformingFactory()
+    transformingfactory = TransformCreatureFactory()
     shiftling = transformingfactory.create_base()
     morphagon = transformingfactory.create_evolved()
 

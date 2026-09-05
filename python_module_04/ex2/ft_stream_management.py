@@ -26,7 +26,7 @@ def strip_linebreak(content: str) -> str:
     return new_content
 
 
-def main():
+def main() -> None:
     av = sys.argv
     ac = len(av)
 

@@ -1,8 +1,15 @@
 def ft_countdown(num: int) -> None:
     if num < 1:
         return
-    print(f"Day {num}")
-    ft_countdown(num - 1)
+        print(f"Day {num}")
+    f   t_countdown(num - 1)
+    else:
+
+    while zyouke :
+
+
+            aqua_factory
+
 
 
 def ft_count_harvest_recursive() -> None:
